@@ -17,7 +17,8 @@
 <meta property="og:locale" content="pt_BR">
 <!-- A imagem de compartilhamento (1200x630) sai da própria landing: landing-anuncio-ferramentas/og/. Quando a página
      tiver endereço público, troque por endereço ABSOLUTO: o WhatsApp e o Facebook não leem caminho relativo. -->
-<meta property="og:image" content="img/og.jpg">
+<meta property="og:url" content="https://lp2.savatecnologia.com.br/">
+<meta property="og:image" content="https://lp2.savatecnologia.com.br/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Um iPhone bloqueado com a nota do plantão autorizada nas notificações da SAVA, ao lado da frase: a burocracia da sua empresa médica, resolvida pelo celular.">
@@ -1232,7 +1233,9 @@ de emitir</h1><div class="summary-card"><div class="summary-row"><div class="k">
   const espera = (ms) => new Promise((r) => setTimeout(r, ms))
 
   const q = new URLSearchParams(location.search)
-  const de = (q.get('de') || ['anuncio', q.get('utm_campaign')].filter(Boolean).join(':')).slice(0, 40)
+  /* `de` diz de onde veio a inscrição: `?de=` manda; senão "lp2" (esta página) + a campanha do anúncio, pra
+     comparar com a lp (escura) no CRM. */
+  const de = (q.get('de') || ['lp2', q.get('utm_campaign')].filter(Boolean).join(':')).slice(0, 40)
 
   /* LGPD (skill sava-landing-page, B10): o pixel só carrega depois do "Aceito". A escolha fica neste aparelho: sem
      escolha, o cartão aparece; "Agora não" vale até a pessoa limpar o navegador. Sem ID, nada disto acontece. */
